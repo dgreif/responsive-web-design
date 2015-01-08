@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.panel {
+    text-align: left;
+}
+
+.panel-heading {
+    font-size: 25px;
+}

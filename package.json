@@ -1,0 +1,23 @@
+{
+  "name": "responsive-web-design",
+  "version": "0.0.0",
+  "description": "Responsive Web Design Workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dgreif/responsive-web-design.git"
+  },
+  "author": "Dusty Greif",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dgreif/responsive-web-design/issues"
+  },
+  "homepage": "https://github.com/dgreif/responsive-web-design",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-connect": "^2.2.0"
+  }
+}
