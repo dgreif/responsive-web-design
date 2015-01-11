@@ -1,0 +1,47 @@
+header h1 {
+    font-size: 25px;
+    margin: 0 0 10px 0;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+header {
+    border-bottom: 1px solid silver;
+    padding: 10px;
+}
+
+header .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+header .menu li {
+    display: inline-block;
+}
+
+header .menu li a {
+    display: inline-block;
+    border: 1px solid silver;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.content {
+    padding: 10px;
+}
+
+.right {
+    float: right;
+}
+
+.ng-cloak {
+    display: none !important;
+}
+
+.editor {
+    height: 330px;
+}

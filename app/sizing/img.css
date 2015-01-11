@@ -1,0 +1,15 @@
+img.static {
+    display: block;
+    width: 600px;
+    height: auto;
+}
+
+img.dynamic {
+    width: 95%;
+    max-width: 600px;
+    height: auto;
+}
+
+img {
+    margin: 10px;
+}

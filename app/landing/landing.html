@@ -1,0 +1,8 @@
+<h2>Home</h2>
+<section class="panel panel-default" ng-repeat="section in sections">
+    <div class="panel-heading">{{section.name}}</div>
+    <div class="panel-body">
+        <div class="well well-sm">{{section.codeExample}}</div>
+        <a ng-href="#/{{section.key}}" class="btn btn-default">Explore</a>
+    </div>
+</section>

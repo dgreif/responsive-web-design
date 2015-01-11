@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
     connect = require('gulp-connect'),
-    srcFiles = ['*.html', '*.css'];
+    srcFiles = ['*.html', '*.css', 'app/**/*.html', 'app/**/*.css', 'app/**/*.js'];
 
 gulp.task('serve', function () {
     connect.server({

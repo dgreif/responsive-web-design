@@ -1,0 +1,18 @@
+/* NOTE: this css is only for prettiness!  Bootstrap is doing ALL the heavy lifting for the responsive design */
+
+.row > div {
+    background: #444;
+    border: 1px solid #000;
+    border-radius: 4px;
+    color: white;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.row {
+    margin-bottom: 20px;
+}
+
+body {
+    padding: 30px;
+}

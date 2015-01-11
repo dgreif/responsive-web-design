@@ -1,0 +1,10 @@
+.largeOnly {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    .largeOnly {
+        display: block;
+        color: green;
+    }
+}

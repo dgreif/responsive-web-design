@@ -1,0 +1,14 @@
+/* You can ignore this CSS file for now.  In this example it only adds some color.
+    The width properties are in-lined in the HTML above */
+
+body {
+    padding: 10px;
+}
+
+.pretty {
+    background: #444;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: white;
+}
