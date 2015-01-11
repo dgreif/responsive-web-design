@@ -1,4 +1,4 @@
-<h2>{{section.name}}: {{example.name}}<span class="right"><button class="btn btn-primary" ng-click="sendCode()">Check it!</button></span></h2>
+<h2><a ng-href="#/{{section.key}}">{{section.name}}</a>: {{example.name}}<span class="right"><button class="btn btn-primary" ng-click="sendCode()">Check it!</button></span></h2>
 <div ng-show="example_html">
     <h3>HTML</h3>
     <div class="editor" ui-ace="{
