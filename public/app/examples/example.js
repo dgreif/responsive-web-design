@@ -48,6 +48,6 @@ angular.module('rwd.example', ['ngRoute'])
                 html = html.replace('</head>', '<style type="text/css">' + css + '</style></head>');
             }
 
-            $http.post('http://localhost:8081/' + encodeURI(name), html);
+            $http.post('/client/' + encodeURI(name), html);
         }
     }]);
