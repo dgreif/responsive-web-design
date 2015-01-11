@@ -1,11 +1,11 @@
 'use strict';
 
 function getClientName() {
-    return localStorage['clientName'];
+    return localStorage['clientName'] || '';
 }
 
 function setClientName(name) {
-    localStorage['clientName'] = name;
+    localStorage['clientName'] = name || '';
 }
 
 // Declare app level module which depends on views, and components
