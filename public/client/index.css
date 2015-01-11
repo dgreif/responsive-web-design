@@ -1,3 +1,10 @@
 body {
     padding: 10px;
 }
+
+.form-control {
+    display: inline !important;
+    width: auto !important;
+    position: relative;
+    top: 1px;
+}

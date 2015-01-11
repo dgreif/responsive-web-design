@@ -35,6 +35,7 @@
         
         changeButton.innerHTML = "Change Name";
         changeButton.id = "changeName";
+        changeButton.className = "btn btn-default";
         changeButton.onclick = changeName
         info.appendChild(changeButton);
 
