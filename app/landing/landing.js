@@ -8,6 +8,11 @@ angular.module('rwd.landing', ['ngRoute'])
             templateUrl: 'landing/landing.html',
             controller: 'LandingCtrl'
         });
+
+        $routeProvider.when('/definition', {
+            templateUrl: 'landing/definition.html',
+            controller: 'LandingCtrl'
+        });
     }])
 
     .controller('LandingCtrl', [function() {
