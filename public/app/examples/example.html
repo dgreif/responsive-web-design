@@ -1,20 +1,35 @@
-<h2><a ng-href="#/{{section.key}}">{{section.name}}</a>: {{example.name}}<span class="right"><button class="btn btn-primary" ng-click="sendCode()">Check it!</button></span></h2>
-<div ng-show="example_html">
-    <h3>HTML</h3>
-    <div class="editor" ui-ace="{
+<section class="example">
+    <h2 class="header">
+        <a ng-href="#/{{section.key}}">{{section.name}}</a>: {{example.name}}
+        <span class="right">
+            <button class="glyphicon glyphicon-thumbs-up btn btn-default"></button>
+            <button class="glyphicon glyphicon-thumbs-down btn btn-default"></button>
+            <button class="glyphicon glyphicon-question-sign btn btn-default"></button>
+            <a class="btn btn-default" ng-if="nextExample" ng-href="#/{{nextSection.key}}/{{nextExample.key}}">Next</a>
+            <a class="btn btn-default" ng-if="finalExample" ng-href="#/home">Home</a>
+            <button class="btn btn-primary" ng-click="sendCode()">See it!
+            </button>
+        </span>
+    </h2>
+    <div ng-show="example_html">
+        <h3>HTML</h3>
+
+        <div class="editor" ui-ace="{
   useWrapMode : true,
   mode: 'html',
   onLoad: aceLoaded,
   onChange: aceChanged
 }" ng-model="example_html"></div>
-</div>
+    </div>
 
-<div ng-show="example_css">
-    <h3>CSS</h3>
-    <div class="editor" ui-ace="{
+    <div ng-show="example_css">
+        <h3>CSS</h3>
+
+        <div class="editor" ui-ace="{
   useWrapMode : true,
   mode: 'html',
   onLoad: aceLoaded,
   onChange: aceChanged
 }" ng-model="example_css"></div>
-</div>
+    </div>
+</section>

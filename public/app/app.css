@@ -36,6 +36,8 @@ header .menu li a {
 
 .right {
     float: right;
+    position: relative;
+    top: 4px;
 }
 
 .ng-cloak {
@@ -44,4 +46,13 @@ header .menu li a {
 
 .editor {
     height: 330px;
+    border: 1px solid silver;
+}
+
+.glyphicon.btn {
+    top: 0;
+}
+
+.example .header .btn-primary {
+    margin-left: 25px;
 }
