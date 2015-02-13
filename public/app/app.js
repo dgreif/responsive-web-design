@@ -14,6 +14,7 @@ angular.module('rwd', [
     'rwd.landing',
     'rwd.section',
     'rwd.example',
+    'rwd.feedback',
     'ui.ace'
 ])
     .constant('sections', {

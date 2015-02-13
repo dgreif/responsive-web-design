@@ -2,9 +2,9 @@
     <h2 class="header">
         <a ng-href="#/{{section.key}}">{{section.name}}</a>: {{example.name}}
         <span class="right">
-            <button class="glyphicon glyphicon-thumbs-up btn btn-default"></button>
-            <button class="glyphicon glyphicon-thumbs-down btn btn-default"></button>
-            <button class="glyphicon glyphicon-question-sign btn btn-default"></button>
+            <button class="glyphicon glyphicon-thumbs-up btn btn-default" ng-class="{active:feedback.isThumbsUp}" ng-click="feedback.thumbsUp()"></button>
+            <button class="glyphicon glyphicon-thumbs-down btn btn-default" ng-class="{active:feedback.isThumbsDown}" ng-click="feedback.thumbsDown()"></button>
+            <button class="glyphicon glyphicon-question-sign btn btn-default" ng-click="feedback.question()"></button>
             <a class="btn btn-default" ng-if="nextExample" ng-href="#/{{nextSection.key}}/{{nextExample.key}}">Next</a>
             <a class="btn btn-default" ng-if="finalExample" ng-href="#/home">Home</a>
             <button class="btn btn-primary" ng-click="sendCode()">See it!
@@ -12,6 +12,7 @@
         </span>
     </h2>
     <div ng-show="example_html">
+
         <h3>HTML</h3>
 
         <div class="editor" ui-ace="{
