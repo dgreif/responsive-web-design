@@ -1,3 +1,5 @@
+'use strict';
+
 function disableForm() {
     document.getElementById('name').disabled = true;
     document.getElementById('submit').disabled = true;
@@ -18,4 +20,12 @@ function nameSubmitted() {
     }
 
     return false;
+}
+
+function loadUserNameFromLocalStorage() {
+    var userName = localStorage.clientName;
+
+    if(userName) {
+        document.getElementById('name').value = userName;
+    }
 }
