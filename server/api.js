@@ -3,6 +3,7 @@ var express = require('express'),
     getRawBody = require('raw-body'),
     publicDir = path.join(__dirname, '../public'),
     index = path.join(publicDir, 'index.html'),
+    admin = path.join(publicDir, 'admin/index.html'),
     clientIndex = path.join(publicDir, 'client/index.html'),
     clients = {};
 
@@ -76,6 +77,10 @@ function createApiEndPoints(app, io) {
 
     app.get('/app', function (req, res) {
         res.sendFile(index);
+    });
+
+    app.get('/admin', function (req, res) {
+        res.sendFile(admin);
     });
 
     app.get('/client', function (req, res) {

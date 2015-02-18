@@ -25,8 +25,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('reload', function () {
-    gulp.src(['public/app/index.html'])
-        .pipe(livereload());
+    livereload.reload();
 });
 
 gulp.task('watch', function () {

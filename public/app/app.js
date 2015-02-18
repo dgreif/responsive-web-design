@@ -1,13 +1,5 @@
 'use strict';
 
-function getClientName() {
-    return localStorage['clientName'] || '';
-}
-
-function setClientName(name) {
-    localStorage['clientName'] = name || '';
-}
-
 // Declare app level module which depends on views, and components
 angular.module('rwd', [
     'ngRoute',
@@ -104,10 +96,4 @@ angular.module('rwd', [
     }])
     .run(['$rootScope', 'sections', function ($rootScope, sections) {
         $rootScope.sections = _.sortBy(_.values(sections), 'order');
-
-        $rootScope.name = getClientName();
-
-        $rootScope.$watch('name', function (name) {
-            setClientName(name);
-        });
     }]);
