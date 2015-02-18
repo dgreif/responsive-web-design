@@ -11,6 +11,16 @@ angular.module('rwd.landing', ['ngRoute'])
             templateUrl: 'landing/definition.html',
             controller: 'LandingCtrl'
         });
+
+        $routeProvider.when('/tools', {
+            templateUrl: 'landing/tools.html',
+            controller: 'LandingCtrl'
+        });
+
+        $routeProvider.when('/credits', {
+            templateUrl: 'landing/credits.html',
+            controller: 'LandingCtrl'
+        });
     }])
 
     .controller('LandingCtrl', [function() {

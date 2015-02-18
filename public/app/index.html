@@ -5,7 +5,6 @@
     <base href="/app/">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -16,7 +15,9 @@
     <ul class="menu">
         <li><a ng-href="#/home">Home</a></li>
         <li><a ng-href="#/definition">Definition</a></li>
+        <li><a ng-href="#/tools">Tools</a></li>
         <li ng-repeat="section in sections" class="ng-cloak"><a ng-href="#/{{section.key}}">{{section.name}}</a></li>
+        <li><a ng-href="#/tools">Credits</a></li>
         <li class="right ng-cloak"><input type="text" ng-model="name" placeholder="John Smith"></li>
     </ul>
 </header>
@@ -33,6 +34,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-route.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script src="app.js"></script>
 <script src="landing/landing.js"></script>
 <script src="sections/section.js"></script>
