@@ -1,5 +1,22 @@
 <div class="clients">
-    <div ng-repeat="client in clients">
-
+    <div>
+        <span class="status-summary up">{{ getStatusSummary('up') }}%</span>
+        <span class="status-summary down">{{ getStatusSummary('down') }}%</span>
+        <button class="btn btn-primary reset" ng-click="resetStatuses()">Reset Statuses</button>
     </div>
+    <br />
+    <table>
+        <tr>
+            <td>Client Name</td>
+            <td>Feedback</td>
+            <td>Controllers</td>
+            <td>Viewers</td>
+        </tr>
+        <tr ng-repeat="(name, client) in clients">
+            <td>{{client.name}}</td>
+            <td class="status-{{client.feedback.status}}">{{client.feedback.status}}</td>
+            <td>{{client.controllers}}</td>
+            <td>{{client.viewers}}</td>
+        </tr>
+    </table>
 </div>

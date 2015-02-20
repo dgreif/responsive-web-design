@@ -2,11 +2,7 @@
     'use strict';
 
     var feedback = {},
-        io = io.connect('/client');
-
-    io.on('feedback', function (feedback) {
-        alert(JSON.stringify(feedback));
-    });
+        io = io.connect('/controller');
 
     function getClientName() {
         return localStorage['clientName'] || '';
@@ -16,6 +12,7 @@
         name = name || '';
         localStorage['clientName'] = name;
         io.emit('setName', name);
+        clearStatuses();
     }
 
     function sendFeedbackStatus(to, options) {
@@ -27,34 +24,27 @@
     }
 
     function clearStatuses() {
-        feedback.isThumbsUp = false;
-        feedback.isThumbsDown = false;
-
+        feedback.status = null;
         sendFeedbackStatus(null);
     }
 
-
     feedback.thumbsUp = function () {
-        var on = feedback.isThumbsUp;
-
-        clearStatuses();
-
-        if(!on) {
-            feedback.isThumbsUp = true;
+        if(feedback.status !== 'up') {
+            feedback.status = 'up';
 
             sendFeedbackStatus('up');
+        } else {
+            clearStatuses();
         }
     };
 
     feedback.thumbsDown = function () {
-        var on = feedback.isThumbsDown;
-
-        clearStatuses();
-
-        if(!on) {
-            feedback.isThumbsDown = true;
+        if(feedback.status !== 'down') {
+            feedback.status = 'down';
 
             sendFeedbackStatus('down');
+        } else {
+            clearStatuses();
         }
     };
 
@@ -88,6 +78,11 @@
 
             $rootScope.$watch('name', function (name) {
                 setClientName(name);
+            });
+
+            io.on('feedback', function (feedbackFromServer) {
+                feedback.status = feedbackFromServer.status;
+                $rootScope.$apply();
             });
         }]);
 }(io));

@@ -1,39 +1,65 @@
 var socketio = require('socket.io'),
+    _ = require('lodash'),
     io,
     clientIo,
-    adminIo;
+    adminIo,
+    ClientManager = require('./ClientManager'),
+    clientManager;
 
 function startSocketServer(appServer) {
     io = socketio.listen(appServer);
+    clientManager = new ClientManager(io);
 
-    clientIo = io.of('/client');
-    clientIo.on('connection', function (clientSocket) {
+    clientIo = io.of('/controller');
+    clientIo.on('connection', function (controllerSocket) {
         var clientName = "";
 
-        clientSocket.on('disconnect', function () {
-            //client is gone.
-        });
-
-        clientSocket.on('feedback', function (feedback) {
-            console.log('feedback', feedback);
-            adminIo.emit('feedback', feedback);
-        });
-
-        clientSocket.on('setName', function (name) {
+        controllerSocket.on('disconnect', function () {
             if (clientName) {
-                clientSocket.leave(clientName);
+                clientManager.getClient(clientName).removeControllerSocket(controllerSocket);
             }
-            clientSocket.join(name);
+        });
 
-            console.log('got client name', clientName, name);
+        controllerSocket.on('feedback', function (feedback) {
+            if (clientName) {
+                var client = clientManager.getClient(clientName);
 
-            clientName = name;
+                client.setFeedback(feedback);
+            }
+        });
+
+        controllerSocket.on('setName', function (newName) {
+            if(clientName === newName) {
+                return;
+            }
+
+            if (clientName) {
+                controllerSocket.leave(clientName);
+                clientManager.getClient(clientName).removeControllerSocket(controllerSocket);
+            }
+
+            if (newName) {
+                controllerSocket.join(newName);
+                clientManager.getClient(newName).addControllerSocket(controllerSocket);
+
+                clientName = newName;
+            }
         });
     });
 
     adminIo = io.of('/admin');
     adminIo.on('connection', function (adminSocket) {
+        var clients = _.map(clientManager.getClients(), function (client) {
+            return client.toJSON();
+        });
 
+        adminSocket.emit('currentClients', clients);
+
+        adminSocket.on('resetStatuses', function () {
+            clientManager.resetStatuses();
+
+            adminIo.emit('resetStatuses');
+        });
     });
 
     return io

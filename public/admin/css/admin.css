@@ -1,0 +1,37 @@
+.status-up {
+    background: green;
+}
+
+.status-down {
+    background: red;
+}
+
+.status-summary {
+    display: inline-block;
+    font-size: 20px;
+    text-align: right;
+    width: 80px;
+}
+
+.status-summary.up {
+    color: green;
+}
+
+
+.status-summary.down {
+    color: red;
+}
+
+.reset.btn {
+    margin-left: 20px;
+}
+
+tr {
+    border: solid 1px #a8a8a8;
+}
+
+td {
+    border: solid 1px #a8a8a8;
+    min-width: 40px;
+    padding: 3px 5px;
+}
