@@ -88,5 +88,9 @@
             $scope.getQuestions = function () {
                 return _.values(questions);
             };
+
+            $scope.getClientCount = function () {
+                return _.keys(clients).length;
+            }
         }]);
 }(io));

@@ -1,5 +1,6 @@
 <div class="clients">
     <div>
+        <span class="status-summary">{{ getClientCount() }}</span>
         <span class="status-summary up">{{ getStatusSummary('up') }}%</span>
         <span class="status-summary down">{{ getStatusSummary('down') }}%</span>
         <button class="btn btn-primary reset" ng-click="resetStatuses()">Reset Statuses</button>
@@ -14,7 +15,7 @@
             <td>Controllers</td>
             <td>Viewers</td>
         </tr>
-        <tr ng-repeat="(name, client) in clients">
+        <tr ng-repeat="(name, client) in clients" class="client">
             <td>{{client.name}}</td>
             <td class="status {{client.feedback.status}}">{{client.controllers}}</td>
             <td>{{client.viewers}}</td>

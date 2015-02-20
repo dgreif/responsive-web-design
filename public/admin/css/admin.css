@@ -18,7 +18,7 @@ body {
     display: inline-block;
     font-size: 20px;
     text-align: right;
-    width: 80px;
+    width: 70px;
 }
 
 .status-summary.up {
@@ -38,4 +38,8 @@ body {
     cursor: pointer;
     margin-bottom: 10px;
     padding: 10px;
+}
+
+.client > td {
+    padding: 2px 8px !important;
 }
