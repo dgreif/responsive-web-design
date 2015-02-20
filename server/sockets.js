@@ -45,6 +45,13 @@ function startSocketServer(appServer) {
                 clientName = newName;
             }
         });
+
+        controllerSocket.on('question', function (question) {
+            adminIo.emit('question', {
+                clientName: clientName,
+                question: question
+            });
+        });
     });
 
     adminIo = io.of('/admin');

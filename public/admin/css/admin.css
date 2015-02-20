@@ -1,9 +1,17 @@
-.status-up {
+body {
+    padding: 10px;
+}
+
+.status.up {
     background: green;
 }
 
-.status-down {
+.status.down {
     background: red;
+}
+
+.status {
+    transition: all .5s ease;
 }
 
 .status-summary {
@@ -26,12 +34,8 @@
     margin-left: 20px;
 }
 
-tr {
-    border: solid 1px #a8a8a8;
-}
-
-td {
-    border: solid 1px #a8a8a8;
-    min-width: 40px;
-    padding: 3px 5px;
+.alert {
+    cursor: pointer;
+    margin-bottom: 10px;
+    padding: 10px;
 }

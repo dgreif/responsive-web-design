@@ -16,7 +16,6 @@
     }
 
     function sendFeedbackStatus(to, options) {
-        console.log('sending feedback:', to);
         io.emit('feedback', {
             status: to,
             options: options
@@ -51,8 +50,8 @@
     feedback.question = function () {
         var question = window.prompt("Ask a question:");
 
-        if (question) {
-            alert('you asked: ' + question);
+        if(question && question.trim()) {
+            io.emit('question', question);
         }
     };
 

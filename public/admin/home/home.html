@@ -5,17 +5,18 @@
         <button class="btn btn-primary reset" ng-click="resetStatuses()">Reset Statuses</button>
     </div>
     <br />
-    <table>
+    <div ng-repeat="question in getQuestions() | orderBy:'key':true" class="alert alert-info" ng-click="removeQuestion(question)" title="{{question.clientName}}">
+        {{question.question}}
+    </div>
+    <table class="table table-striped">
         <tr>
             <td>Client Name</td>
-            <td>Feedback</td>
             <td>Controllers</td>
             <td>Viewers</td>
         </tr>
         <tr ng-repeat="(name, client) in clients">
             <td>{{client.name}}</td>
-            <td class="status-{{client.feedback.status}}">{{client.feedback.status}}</td>
-            <td>{{client.controllers}}</td>
+            <td class="status {{client.feedback.status}}">{{client.controllers}}</td>
             <td>{{client.viewers}}</td>
         </tr>
     </table>

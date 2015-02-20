@@ -1,7 +1,18 @@
 (function (ioServer) {
     'use strict';
 
-    var io = ioServer.connect('/admin');
+    var io = ioServer.connect('/admin'),
+        questionKey = 1;
+
+    function getKeyFromQuestion(question) {
+        if (question.key) {
+            return question.key;
+        }
+
+        question.key = questionKey++;
+
+        return question.key;
+    }
 
     angular.module('rwdAdmin.home', ['ngRoute'])
         .config(['$routeProvider', function ($routeProvider) {
@@ -12,22 +23,23 @@
         }])
 
         .controller('HomeCtrl', ['$scope', function ($scope) {
-            var clients = {};
+            var clients = {},
+                questions = {};
+
             $scope.clients = clients;
+            $scope.questions = questions;
 
             io.on('clientAdded', function (client) {
 
             });
 
             io.on('clientUpdated', function (client) {
-                console.log('clientUpdated', JSON.stringify(client));
                 clients[client.name] = client;
                 $scope.$apply();
             });
 
             io.on('clientRemoved', function (name) {
                 delete clients[name];
-                console.log('clientRemoved', name);
                 $scope.$apply();
             });
 
@@ -44,7 +56,7 @@
 
                 _.each(clients, function (client) {
                     totalCount++;
-                    if(client.feedback && client.feedback.status === status) {
+                    if (client.feedback && client.feedback.status === status) {
                         statusCount++;
                     }
                 });
@@ -62,5 +74,19 @@
                 });
                 $scope.$apply();
             });
+
+            io.on('question', function (question) {
+                var key = getKeyFromQuestion(question);
+                questions[key] = question;
+                $scope.$apply();
+            });
+
+            $scope.removeQuestion = function (question) {
+                delete questions[getKeyFromQuestion(question)];
+            };
+
+            $scope.getQuestions = function () {
+                return _.values(questions);
+            };
         }]);
 }(io));
