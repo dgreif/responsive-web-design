@@ -8,38 +8,66 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-<header>
-    <h1>Responsive Web Design
-        <a href="http://goo.gl/hbbMpi" target="_blank" class="right">goo.gl/hbbMpi</a>
-    </h1>
-    <ul class="menu">
-        <li><a ng-href="#/home">Home</a></li>
-        <li><a ng-href="#/definition">Definition</a></li>
-        <li><a ng-href="#/tools">Tools</a></li>
-        <li ng-repeat="section in sections" class="ng-cloak"><a ng-href="#/{{section.key}}">{{section.name}}</a></li>
-        <li><a ng-href="#/tools">Credits</a></li>
-        <li class="right ng-cloak"><input type="text" ng-model="name" placeholder="John Smith"></li>
-    </ul>
-</header>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#/home">RWD</a>
+                    <a href="http://goo.gl/hbbMpi" target="_blank" class="navbar-brand">goo.gl/hbbMpi</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/home">Home</a></li>
+                        <li><a ng-href="#/definition">Definition</a></li>
+                        <li><a ng-href="#/tools">Tools</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">Examples <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li ng-repeat="section in sections" class="ng-cloak"><a ng-href="#/{{section.key}}">{{section.name}}</a></li>
+                            </ul>
+                        </li>
+                        <li><a ng-href="#/credits">Credits</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="ng-cloak input"><input type="text" ng-model="user.name" placeholder="John Smith"></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
 
 
-<!--[if lt IE 8]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
+    <!--[if lt IE 8]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+        your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-<div class="content" ng-view>Loading...</div>
+    <div class="content" ng-view>Loading...</div>
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-route.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="app.js"></script>
-<script src="landing/landing.js"></script>
-<script src="sections/section.js"></script>
-<script src="examples/example.js"></script>
-<script src="feedback/feedback.js"></script>
-<script src="thirdparty/ui-ace.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.8/angular-route.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+    <script src="landing/landing.js"></script>
+    <script src="sections/section.js"></script>
+    <script src="examples/example.js"></script>
+    <script src="feedback/feedback.js"></script>
+    <script src="thirdparty/ui-ace.js"></script>
 </body>
 </html>

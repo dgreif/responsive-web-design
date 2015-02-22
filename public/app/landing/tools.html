@@ -4,5 +4,9 @@
 <a target="_blank" href="http://lab.maltewassermann.com/viewport-resizer/">Viewport Resizer Bookmark</a><br/>
     <br />
 <a target="_blank" href="https://developer.chrome.com/devtools/docs/device-mode">Chrome Dev Tools - Device Mode</a></h3>
+To open Dev tools in chrome you can right click anywhere on the page and select "Inspect Element".  Alternatively, go to the chome
+menu -> More Tools -> Developer tools.
 <br /><br />
-<a ng-href="#/meta/basicScaling" class="btn btn-primary">Next:  Let's see some code!</a>
+<h4>Please enter your full name or student ID.  This will be used to store and retrieve your code examples on the server.</h4>
+<input type="text" ng-model="user.name" placeholder="John Smith"><br /><br />
+<a ng-disabled="!user.name" ng-href="#/meta/basicScaling" class="btn btn-primary">Next:  Let's see some code!</a>

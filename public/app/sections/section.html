@@ -1,5 +1,5 @@
 <h2 ng-bind="section.name + ' Examples'"></h2>
-<ul>
+<ul class="examples">
     <li ng-repeat="example in section.examples">
         <a ng-href="#/{{section.key}}/{{example.key}}" ng-bind="example.name"></a>
     </li>

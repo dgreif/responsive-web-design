@@ -1,36 +1,5 @@
 @import "mixins";
 
-header {
-    border-bottom: 1px solid silver;
-    padding: 10px;
-
-    h1 {
-        @include clearfix;
-
-        font-size: 25px;
-        margin: 0 0 10px 0;
-    }
-
-    .menu {
-        @include clearfix;
-
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        li {
-            display: inline-block;
-
-            a {
-                display: inline-block;
-                border: 1px solid silver;
-                padding: 5px;
-                margin-left: 5px;
-            }
-        }
-    }
-}
-
 h2 {
     @include clearfix;
     font-size: 24px;
@@ -74,4 +43,38 @@ h2 {
 
 .glyphicon-thumbs-down.active {
     background: red;
+}
+
+nav.navbar {
+    margin-bottom: 5px;
+}
+
+.navbar-nav {
+    li a {
+        cursor: pointer;
+    }
+
+    li.input {
+        padding: 15px 0 15px 15px;
+
+        input {
+            width: 130px;
+        }
+    }
+}
+
+ul.examples {
+    list-style: none;
+    padding: 0;
+
+    li {
+        border: #a8a8a8 solid 1px;
+        border-radius: 4px;
+        margin: 5px;
+
+        a {
+            display: block;
+            padding: 15px;
+        }
+    }
 }

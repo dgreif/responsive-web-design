@@ -56,8 +56,9 @@
     };
 
     angular.module('rwd.feedback', [])
-        .run(['$rootScope', '$http', function ($rootScope, $http) {
+        .run(['$rootScope', '$window', function ($rootScope, $w) {
             $rootScope.feedback = feedback;
+            $rootScope.user = {};
 
             function subscribeToIOEvents(io) {
                 io.on('answer', function (clientName) {
@@ -69,13 +70,13 @@
 
             $rootScope.$on('$routeChangeSuccess', clearStatuses);
 
-            $rootScope.name = getClientName();
+            $rootScope.user.name = getClientName();
 
-            if($rootScope.name) {
-                setClientName($rootScope.name);
+            if($rootScope.user.name) {
+                setClientName($rootScope.user.name);
             }
 
-            $rootScope.$watch('name', function (name) {
+            $rootScope.$watch('user.name', function (name) {
                 setClientName(name);
             });
 
