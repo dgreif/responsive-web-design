@@ -1,6 +1,6 @@
 <section class="example">
     <h2 class="header">
-        <a ng-href="#/{{section.key}}">{{section.name}}</a>: {{example.name}}
+        <a ng-href="#/{{section.key}}">{{section.name}}</a>: {{example.name}} ({{example.number}} of {{exampleCount}})
         <span class="right">
             <button class="glyphicon glyphicon-thumbs-up btn btn-default" ng-class="{active:feedback.status == 'up'}" ng-click="feedback.thumbsUp()"></button>
             <button class="glyphicon glyphicon-thumbs-down btn btn-default" ng-class="{active:feedback.status == 'down'}" ng-click="feedback.thumbsDown()"></button>
