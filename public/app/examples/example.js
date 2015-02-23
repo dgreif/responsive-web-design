@@ -25,7 +25,7 @@
             if (exampleIndex !== orderedExamples.length - 1) {
                 $scope.nextSection = section;
                 $scope.nextExample = orderedExamples[exampleIndex + 1];
-            } else if(sectionIndex !== orderedSections.length - 1) {
+            } else if (sectionIndex !== orderedSections.length - 1) {
                 var nextSection = orderedSections[sectionIndex + 1],
                     nextSectionExamples = _.sortBy(_.values(nextSection.examples), 'order');
 
@@ -35,17 +35,23 @@
                 $scope.finalExample = true;
             }
 
+            if (!example.defaultCode) {
+                example.defaultCode = {};
+                example.userCode = {};
+
                 _.each(['html', 'css'], function (fileType) {
                     if (example[fileType]) {
                         $http.get('/app/' + sectionKey + '/' + exampleKey + '.' + fileType).success(function (resp) {
-                            $scope['example_' + fileType] = resp;
+                            example.defaultCode[fileType] = resp;
+                            example.userCode[fileType] = resp;
                         });
                     }
                 });
+            }
 
             $scope.sendCode = function () {
-                var html = $scope.example_html,
-                    css = $scope.example_css,
+                var html = example.userCode.html,
+                    css = example.userCode.css,
                     name = $scope.user.name || '';
 
                 name = name.trim();
@@ -60,6 +66,12 @@
                 }
 
                 $http.post('/client/' + encodeURI(name), html);
-            }
+            };
+
+            $scope.resetExample = function () {
+                _.each(example.defaultCode, function (code, fileType) {
+                    example.userCode[fileType] = code;
+                });
+            };
         }]);
 }());
