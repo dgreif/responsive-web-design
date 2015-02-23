@@ -77,6 +77,11 @@
                         name: 'Basic Grid',
                         html: true,
                         css: true
+                    },
+                    navbar: {
+                        name: 'Navbar',
+                        html: true,
+                        css: true
                     }
                 }
             }

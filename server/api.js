@@ -46,7 +46,11 @@ function saveClient(name, clientObj) {
 }
 
 function appendToClientCode(code) {
-    var code = code.replace('</body>', '<script src="/socket.io/socket.io.js"></script><script src="client.js"></script></body>');
+    var code = code.replace('</body>', '<script src="/socket.io/socket.io.js"></script>' +
+    '<script src="client.js"></script>' +
+    '<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>' +
+    '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>' +
+    '</body>');
     code = code.replace('</head>', '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"><link href="client.css" type="text/css" rel="stylesheet"></head>');
     return code;
 }

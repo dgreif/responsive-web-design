@@ -4,3 +4,7 @@
     bottom: 10px;
     right: 10px;
 }
+
+section.info {
+    padding: 10px;
+}
