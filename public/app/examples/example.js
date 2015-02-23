@@ -46,7 +46,7 @@
             $scope.sendCode = function () {
                 var html = $scope.example_html,
                     css = $scope.example_css,
-                    name = $scope.name || '';
+                    name = $scope.user.name || '';
 
                 name = name.trim();
 
