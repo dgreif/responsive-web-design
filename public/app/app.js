@@ -80,8 +80,7 @@
                     },
                     navbar: {
                         name: 'Navbar',
-                        html: true,
-                        css: true
+                        html: true
                     }
                 }
             }

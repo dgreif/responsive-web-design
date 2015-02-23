@@ -35,20 +35,6 @@
                 $scope.finalExample = true;
             }
 
-            if (!example.defaultCode) {
-                example.defaultCode = {};
-                example.userCode = {};
-
-                _.each(['html', 'css'], function (fileType) {
-                    if (example[fileType]) {
-                        $http.get('/app/' + sectionKey + '/' + exampleKey + '.' + fileType).success(function (resp) {
-                            example.defaultCode[fileType] = resp;
-                            example.userCode[fileType] = resp;
-                        });
-                    }
-                });
-            }
-
             $scope.sendCode = function () {
                 var html = example.userCode.html,
                     css = example.userCode.css,
@@ -67,6 +53,24 @@
 
                 $http.post('/client/' + encodeURI(name), html);
             };
+
+            if (!example.defaultCode) {
+                example.defaultCode = {};
+                example.userCode = {};
+
+                _.each(['html', 'css'], function (fileType) {
+                    if (example[fileType]) {
+                        $http.get('/app/' + sectionKey + '/' + exampleKey + '.' + fileType).success(function (resp) {
+                            example.defaultCode[fileType] = resp;
+                            example.userCode[fileType] = resp;
+
+                            $scope.sendCode();
+                        });
+                    }
+                });
+            } else {
+                $scope.sendCode();
+            }
 
             $scope.resetExample = function () {
                 _.each(example.defaultCode, function (code, fileType) {
