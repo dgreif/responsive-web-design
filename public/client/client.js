@@ -1,4 +1,4 @@
-(function(io) {
+(function (io) {
     function setStatus(status) {
         document.getElementById('status').innerHTML = ' ' + status;
     }
@@ -9,16 +9,13 @@
     }
 
     function subscribeToIOEvents(io) {
-        var io = io.connect(),
-            myName = getClientName();
+        var myName = getClientName(),
+            io = io.connect('/viewer', {query: 'name=' + myName});
 
         setStatus('Connected as: ' + myName);
 
-        io.on('reload', function (clientName) {
-
-            if(clientName == myName) {
-                document.location.reload();
-            }
+        io.on('reload', function () {
+            document.location.reload();
         });
     }
 
@@ -32,7 +29,7 @@
             status = document.createElement('span');
 
         info.id = "info";
-        
+
         changeButton.innerHTML = "Change Name";
         changeButton.id = "changeName";
         changeButton.className = "btn btn-default";
@@ -41,7 +38,7 @@
 
         status.id = "status";
         info.appendChild(status);
-        
+
         document.body.appendChild(info);
     }
 

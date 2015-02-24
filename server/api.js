@@ -5,7 +5,8 @@ var express = require('express'),
     index = path.join(publicDir, 'index.html'),
     admin = path.join(publicDir, 'admin/index.html'),
     clientIndex = path.join(publicDir, 'client/index.html'),
-    clients = {};
+    _ = require('lodash'),
+    clientManager = {};
 
 function setBasePath(app) {
     app.use(express.static(publicDir));
@@ -38,15 +39,16 @@ function getDefaultClientCode(clientName) {
 }
 
 function getClient(name) {
-    return clients[name.toLowerCase()] || {name: name, code: getDefaultClientCode(name)}
-}
+    var client = clientManager.getClient(name);
+    if (!client.code || !client.code.replace) {
+        client.code = getDefaultClientCode(name);
+    }
 
-function saveClient(name, clientObj) {
-    clients[name.toLowerCase()] = clientObj;
+    return client;
 }
 
 function wrapClientCode(code) {
-    var code = code.replace('</body>', '<script src="/socket.io/socket.io.js"></script><script src="client.js"></script></body>');
+    code = code.replace('</body>', '<script src="/socket.io/socket.io.js"></script><script src="client.js"></script></body>');
     code = code.replace('</head>', '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"><link href="client.css" type="text/css" rel="stylesheet"></head>');
     return code;
 }
@@ -65,12 +67,11 @@ function setClientCode(clientName, code) {
     }
 
     client.code = code;
-
-    saveClient(clientName, client);
 }
 
-
 function createApiEndPoints(app, io) {
+    clientManager = io.clientManager;
+
     app.get('/', function (req, res) {
         res.sendFile(index);
     });
@@ -93,11 +94,14 @@ function createApiEndPoints(app, io) {
     });
 
     app.post('/client/:name', function (req, res) {
-        var clientName = req.params.name;
+        var clientName = req.params.name,
+            client = getClient(clientName);
 
         setClientCode(clientName, req.text);
 
-        io.emit('reload', clientName);
+        _.each(client.viewerSockets, function (viewerSocket) {
+            viewerSocket.emit('reload');
+        });
 
         res.sendStatus(200);
     });

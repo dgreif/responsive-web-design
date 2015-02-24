@@ -13,12 +13,12 @@
         <tr>
             <td>Client Name</td>
             <td>Controllers</td>
-            <!--<td>Viewers</td>-->
+            <td>Viewers</td>
         </tr>
         <tr ng-repeat="(name, client) in clients" class="client">
             <td>{{client.name}}</td>
             <td class="status {{client.feedback.status}}">{{client.controllers}}</td>
-            <!--<td>{{client.viewers}}</td>-->
+            <td>{{client.viewers}}</td>
         </tr>
     </table>
 </div>

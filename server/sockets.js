@@ -3,12 +3,14 @@ var socketio = require('socket.io'),
     io,
     clientIo,
     adminIo,
+    viewerIo,
     ClientManager = require('./ClientManager'),
     clientManager;
 
 function startSocketServer(appServer) {
     io = socketio.listen(appServer);
     clientManager = new ClientManager(io);
+    io.clientManager = clientManager;
 
     clientIo = io.of('/controller');
     clientIo.on('connection', function (controllerSocket) {
@@ -29,7 +31,7 @@ function startSocketServer(appServer) {
         });
 
         controllerSocket.on('setName', function (newName) {
-            if(clientName === newName) {
+            if (clientName === newName) {
                 return;
             }
 
@@ -66,6 +68,18 @@ function startSocketServer(appServer) {
             clientManager.resetStatuses();
 
             adminIo.emit('resetStatuses');
+        });
+    });
+
+    viewerIo = io.of('/viewer');
+    viewerIo.on('connection', function (viewerSocket) {
+        var clientName = viewerSocket.handshake.query.name,
+            client = clientManager.getClient(clientName);
+
+        client.addViewerSocket(viewerSocket);
+
+        viewerSocket.on('disconnect', function () {
+            client.removeViewerSocket(viewerSocket);
         });
     });
 

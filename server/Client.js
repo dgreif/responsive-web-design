@@ -39,6 +39,20 @@ Client.prototype.removeControllerSocket = function (socketToRemove) {
 
     removeClientIfNoSockets.call(this);
 };
+
+Client.prototype.addViewerSocket = function (socketToAdd) {
+    this.viewerSockets.push(socketToAdd)
+    sendUpdatedClient.call(this);
+};
+
+Client.prototype.removeViewerSocket = function (socketToRemove) {
+    this.viewerSockets = _.reject(this.viewerSockets, function (viewerSocket) {
+        return viewerSocket === socketToRemove;
+    });
+
+    removeClientIfNoSockets.call(this);
+};
+
 Client.prototype.setFeedback = function (feedback) {
     this.feedback = feedback;
 

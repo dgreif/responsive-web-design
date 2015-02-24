@@ -13,6 +13,8 @@ ClientManager.prototype.getClients = function () {
 };
 
 ClientManager.prototype.getClient = function (name) {
+    name = name.toLowerCase();
+
     if(!this.clients[name] && name.trim()) {
         this.clients[name] = new Client(name, this.io);
     }
@@ -20,7 +22,7 @@ ClientManager.prototype.getClient = function (name) {
     return this.clients[name];
 };
 
-ClientManager.prototype.resetStatuses = function (name) {
+ClientManager.prototype.resetStatuses = function () {
     _.each(this.clients, function (client) {
         client.resetStatus();
     });
