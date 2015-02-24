@@ -1,0 +1,22 @@
+.portraitOnly, .landscapeOnly {
+    /* You will need to make them both hidden by default */
+}
+
+/* Put your @media styles here */
+
+
+/* you can ignore the following styles. */
+.portraitOnly, .landscapeOnly {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+}
+
+.portraitOnly {
+    background: #03A9F4;
+}
+
+.landscapeOnly {
+    background: #8BC34A;
+}

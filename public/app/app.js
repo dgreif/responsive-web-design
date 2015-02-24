@@ -70,15 +70,20 @@
                         name: 'Phone, Tablet and Desktop Styling',
                         html: true,
                         css: true
+                    },
+                    zChallenge: {
+                        name: 'CHALLENGE',
+                        html: true,
+                        css: true
                     }
                 }
             },
             bootstrap: {
                 order: 3,
-                name: 'Bootstrap Grid',
+                name: 'Bootstrap',
                 codeExample: '<div class="row"> <div class="col-sm-8"></div> <div class="col-sm-4"></div> </div>',
                 examples: {
-                    basic: {
+                    grid: {
                         name: 'Basic Grid',
                         html: true,
                         css: true

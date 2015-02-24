@@ -1,10 +1,20 @@
 .largeOnly {
+    /* Hide by default */
     display: none;
 }
 
 @media (min-width: 600px) {
     .largeOnly {
+        /* Show if the screen is wider than 600px */
         display: block;
-        color: green;
     }
+}
+
+/* you can ignore the following styles. */
+.largeOnly {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background: #8BC34A;
+    color: white;
 }

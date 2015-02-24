@@ -1,10 +1,21 @@
 .mediumOnly {
+    /* Hide by default */
     display: none;
 }
 
-@media (min-width: 600px) and (max-width: 700px) {
+@media (min-width: 500px) and (max-width: 700px) {
     .mediumOnly {
+        /* Show if the screen is wider than 500px and less than 700px */
         display: block;
-        color: green;
     }
+}
+
+
+/* you can ignore the following styles. */
+.mediumOnly {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    background: #607D8B;
+    color: white;
 }
