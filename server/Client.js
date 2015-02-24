@@ -74,7 +74,7 @@ Client.prototype.hasSockets = function () {
 };
 
 Client.prototype.resetStatus = function () {
-    this.feedback.status = null;
+    this.feedback = {status: null};
     sendFeedbackToControllers.call(this);
 };
 
