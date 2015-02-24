@@ -5,7 +5,7 @@
 
     function getClientName() {
         var href = document.location.href;
-        return decodeURI(href.substr(href.lastIndexOf('/') + 1));
+        return decodeURI(href.substr(href.lastIndexOf('/') + 1)).replace('#', '');
     }
 
     function subscribeToIOEvents(io) {

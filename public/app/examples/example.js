@@ -1,6 +1,12 @@
 (function () {
     'use strict';
 
+    function resizeAceEditors(aceEditors) {
+        _.each(aceEditors, function (aceEditor) {
+            aceEditor.setOption('maxLines', 200);
+        });
+    }
+
     angular.module('rwd.example', ['ngRoute'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider.when('/:sectionKey/:exampleKey', {
@@ -17,7 +23,8 @@
                 orderedSections = _.sortBy(_.values(sections), 'order'),
                 orderedExamples = _.sortBy(_.values(examples), 'order'),
                 sectionIndex = orderedSections.indexOf(section),
-                exampleIndex = orderedExamples.indexOf(example);
+                exampleIndex = orderedExamples.indexOf(example),
+                aceEditors = [];
 
             $scope.section = sections[sectionKey];
             $scope.example = example;
@@ -43,7 +50,9 @@
                 name = name.trim();
 
                 if (!name) {
-                    alert("Please enter your name in the upper right hand corner of the screen");
+                    setTimeout(function () {
+                        alert("Please enter your name in the upper right hand corner of the screen");
+                    });
                     return;
                 }
 
@@ -64,6 +73,7 @@
                             example.defaultCode[fileType] = resp;
                             example.userCode[fileType] = resp;
 
+                            resizeAceEditors(aceEditors);
                             $scope.sendCode();
                         });
                     }
@@ -76,6 +86,11 @@
                 _.each(example.defaultCode, function (code, fileType) {
                     example.userCode[fileType] = code;
                 });
+            };
+
+            $scope.aceLoaded = function (aceEditor) {
+                aceEditors.push(aceEditor);
+                resizeAceEditors(aceEditors);
             };
         }]);
 }());
