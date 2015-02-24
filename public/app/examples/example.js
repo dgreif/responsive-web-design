@@ -14,7 +14,7 @@
                 controller: 'ExampleCtrl'
             });
         }])
-        .controller('ExampleCtrl', ['$scope', '$routeParams', 'sections', '$http', function ($scope, $routeParams, sections, $http) {
+        .controller('ExampleCtrl', ['$scope', '$routeParams', 'sections', '$http', '$window', function ($scope, $routeParams, sections, $http, $window) {
             var sectionKey = $routeParams.sectionKey,
                 exampleKey = $routeParams.exampleKey,
                 section = sections[sectionKey],
@@ -83,9 +83,11 @@
             }
 
             $scope.resetExample = function () {
-                _.each(example.defaultCode, function (code, fileType) {
-                    example.userCode[fileType] = code;
-                });
+                if ($window.confirm('Are you sure you want to reset your example code?')) {
+                    _.each(example.defaultCode, function (code, fileType) {
+                        example.userCode[fileType] = code;
+                    });
+                }
             };
 
             $scope.aceLoaded = function (aceEditor) {

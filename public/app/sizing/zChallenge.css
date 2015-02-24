@@ -1,0 +1,18 @@
+.fluidContentHalf {
+    /* Place your css for Part 1 here. */
+
+
+    /* you can leave the following styles alone. */
+    display: inline-block;
+    background: #444;
+    border-radius: 4px;
+    padding: 5px;
+    color: white;
+}
+
+.fluidImageHalf {
+    /* Place your css for Part 2 here. */
+    width: 200px; /* this width will need to be replaced. */
+
+    height: auto;
+}

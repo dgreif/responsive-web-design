@@ -43,6 +43,11 @@
                         name: 'Fluid Images',
                         html: true,
                         css: true
+                    },
+                    zChallenge: {
+                        name: 'CHALLENGE',
+                        html: true,
+                        css: true
                     }
                 }
             },
